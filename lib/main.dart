@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:live_pokemon_type_grid/FuzColors.dart';
-import 'package:live_pokemon_type_grid/HomePage.dart';
+import 'package:live_pokemon_type_grid/Pages/HomePage.dart';
 
 void main() {
   runApp(BaseApp());

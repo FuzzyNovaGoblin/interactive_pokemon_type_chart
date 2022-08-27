@@ -46,22 +46,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               defendingBar(),
               attackingBar(),
-
-              /* gradient decoration */
-              FractionallySizedBox(
-alignment: Alignment.topLeft,
-                heightFactor: 1 - AXIS_TITLE_BAR_SIZE_FRACTION_LONG,
-                widthFactor: 1 - AXIS_TITLE_BAR_SIZE_FRACTION_LONG,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(topLeft: Radius.circular(20)),
-                    gradient: SweepGradient(center: Alignment(1,1), startAngle: 3.14, endAngle: 4.712389, colors: [ATTACK_COLOR, DEFENDING_COLOR])
-                    // gradient: LinearGradient(begin: Alignment(0.5, 1.0), end: Alignment(1, 0.5), colors: [ATTACK_COLOR, DEFENDING_COLOR])
-
-                  ),
-                  // decoration: ShapeDecoration(shape: ),
-                ),
-              ),
+              cornerDecoration(),
 
               /* inner grid */
               FractionallySizedBox(
@@ -72,6 +57,62 @@ alignment: Alignment.topLeft,
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  FractionallySizedBox cornerDecoration() {
+    TextStyle textStyle = TextStyle(color: Colors.white, fontWeight: FontWeight.bold);
+
+    return FractionallySizedBox(
+      alignment: Alignment.topLeft,
+      heightFactor: 1 - AXIS_TITLE_BAR_SIZE_FRACTION_LONG,
+      widthFactor: 1 - AXIS_TITLE_BAR_SIZE_FRACTION_LONG,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(20)),
+          gradient: SweepGradient(
+            center: Alignment(1, 1),
+            startAngle: 3.14,
+            endAngle: 4.712389,
+            colors: [ATTACK_COLOR, DEFENDING_COLOR],
+          ),
+        ),
+        child: Stack(
+          fit: StackFit.expand,
+          // alignment: AlighA,
+          children: [
+            FractionallySizedBox(
+              alignment: Alignment.bottomLeft,
+              widthFactor: 0.5,
+              heightFactor: 0.5,
+              child: FittedBox(
+                fit: BoxFit.fitWidth,
+                child: Container(
+                    padding: EdgeInsets.all(8),
+                    child: Text(
+                      "Attacker",
+                      style: textStyle,
+                    )),
+              ),
+            ),
+            FractionallySizedBox(
+              alignment: Alignment.topRight,
+              widthFactor: 0.5,
+              heightFactor: 0.5,
+              child: FittedBox(
+                fit: BoxFit.fitWidth,
+                child: Container(
+              alignment: Alignment.topRight,
+                    padding: EdgeInsets.all(8),
+                    child: Text(
+                      "Defender",
+                      style: textStyle,
+                    )),
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -100,26 +141,16 @@ alignment: Alignment.topLeft,
       widthFactor: AXIS_TITLE_BAR_SIZE_FRACTION_LONG,
       alignment: Alignment.topRight,
       child: Container(
-        color: DEFENDING_COLOR,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Text("Defending"),
-            Flexible(
-              child: RotatedBox(
-                quarterTurns: 3,
-                child: TypesLableColumn(
-                  battleSide: BattleSide.Defending,
-                  focusTypeState: focusTypeState,
-                  setHoverPos: setHoverPos,
-                  toggleClickPoint: toggleClickPoint,
-                ),
-              ),
-            )
-          ],
-        ),
-      ),
+          color: DEFENDING_COLOR,
+          child: RotatedBox(
+            quarterTurns: 3,
+            child: TypesLableColumn(
+              battleSide: BattleSide.Defending,
+              focusTypeState: focusTypeState,
+              setHoverPos: setHoverPos,
+              toggleClickPoint: toggleClickPoint,
+            ),
+          )),
     );
   }
 }

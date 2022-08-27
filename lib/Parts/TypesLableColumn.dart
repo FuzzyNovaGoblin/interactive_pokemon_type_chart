@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:live_pokemon_type_grid/Data/BattleSide.dart';
 import 'package:live_pokemon_type_grid/Data/FocusTypeState.dart';
 import 'package:live_pokemon_type_grid/Data/PokemonTypes.dart';
-import 'package:live_pokemon_type_grid/Parts/EffectivenessSquare.dart';
 import 'package:live_pokemon_type_grid/Parts/TypeChip.dart';
 
 class TypesLableColumn extends StatelessWidget {
@@ -24,10 +23,8 @@ class TypesLableColumn extends StatelessWidget {
           BoardPosition boardPos;
           if (battleSide == BattleSide.Attacking) {
             boardPos = BoardPosition(defending: null, attacking: DamageType.values.indexOf(damageType) + 1);
-            // boardPosCheck = BoardPosition(defending: -2, attacking: DamageType.values.indexOf(value) + 1);
           } else {
             boardPos = BoardPosition(defending: DamageType.values.indexOf(damageType) + 1, attacking: null);
-            // boardPosCheck = BoardPosition(defending: DamageType.values.indexOf(value) + 1, attacking: -2);
           }
           Color color = Colors.transparent;
           if (focusTypeState.getPositionColor(boardPos) == FocusColor.Highlighted) {
@@ -47,9 +44,8 @@ class TypesLableColumn extends StatelessWidget {
               child: InkWell(
                 onTap: () => toggleClickPoint(boardPos),
                 child: Container(
-                  // decoration: BoxDecoration(color: color, border: Border.symmetric(horizontal: BorderSide(color: Colors.black))),
+                  decoration: BoxDecoration(color: color),
                   child: TypeChip(damageType: damageType),
-                  // child: Center(child: Text(value.name)),
                 ),
               ),
             ),

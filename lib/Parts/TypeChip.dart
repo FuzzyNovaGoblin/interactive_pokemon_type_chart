@@ -9,9 +9,11 @@ class TypeChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // decoration: BoxDecoration(color: TypeColors.colorFromType(damageType)),
-      decoration: ShapeDecoration(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)), color: TypeColors.colorFromType(damageType)),
-      // Color: TypeColors.colorFromType(damageType),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: TypeColors.colorFromType(damageType),
+        border: Border.all(color: Colors.black, width: 2)
+      ),
       child: Center(
         child: Padding(
           padding: const EdgeInsets.all(2.0),

@@ -23,13 +23,9 @@ class FocusTypeState {
         boardClicks = HashSet();
 
   FocusColor getPositionColor(BoardPosition position) {
-    // print("hover position  attacking: ${hoverPosition.attacking} defending: ${hoverPosition.defending}");
-
     if (boardClicks.contains(position)) {
       return FocusColor.Clicked;
     } else if ((position.attacking == this.hoverPosition.attacking && this.hoverPosition.attacking != null) || (position.defending == this.hoverPosition.defending && this.hoverPosition.defending != null)) {
-    // print("here\nhover position  attacking: ${hoverPosition.attacking} defending: ${hoverPosition.defending}\nposition  attacking: ${position.attacking} defending: ${position.defending}");
-    //   print("");
       return FocusColor.Highlighted;
     } else {
       for (int i = 0; i < boardClicks.length; i++) {

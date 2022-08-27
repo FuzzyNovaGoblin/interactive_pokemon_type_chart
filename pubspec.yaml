@@ -1,7 +1,7 @@
 name: live_pokemon_type_grid
 description: A new Flutter project.
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 
 version: 1.0.0+1
 
@@ -11,9 +11,33 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_launcher_icons: ^0.10.0
 
 
-  cupertino_icons: ^1.0.2
+flutter_icons:
+  image_path: "assets/Pokemon_Type_Chart_Icon.png"
+  android: true # can specify file name here e.g. "ic_launcher"
+  ios: true # can specify file name here e.g. "My-Launcher-Icon"
+  # adaptive_icon_background: "assets/images/christmas-background.png" # only available for Android 8.0 devices and above
+  # adaptive_icon_foreground: "assets/images/icon-foreground-432x432.png" # only available for Android 8.0 devices and above
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  remove_alpha_ios: true
+  web:
+    generate: true
+    # image_path: "assets/Pokemon_Type_Chart_Icon.png"
+    # background_color: "#hexcode"
+    # theme_color: "#hexcode"
+  windows:
+    generate: true
+    # image_path: "assets/images/icon-1024x1024.png"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    # image_path: "assets/images/icon-1024x1024.png"
+  linux:
+    generate: true
+
+
 
 dev_dependencies:
   flutter_test:
@@ -23,8 +47,3 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
-
-
-
-
-  #

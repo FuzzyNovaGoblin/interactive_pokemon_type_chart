@@ -44,8 +44,8 @@ class _HomePageState extends State<HomePage> {
           child: Stack(
             fit: StackFit.expand,
             children: [
-              defendingBar(),
-              attackingBar(),
+              axisBar(BattleSide.Defending),
+              axisBar(BattleSide.Attacking),
               cornerDecoration(),
 
               /* inner grid */
@@ -104,7 +104,7 @@ class _HomePageState extends State<HomePage> {
               child: FittedBox(
                 fit: BoxFit.fitWidth,
                 child: Container(
-              alignment: Alignment.topRight,
+                    alignment: Alignment.topRight,
                     padding: EdgeInsets.all(8),
                     child: Text(
                       "Defender",
@@ -118,39 +118,27 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  FractionallySizedBox attackingBar() {
+  FractionallySizedBox axisBar(BattleSide battleSide) {
+    bool isAttacking = battleSide == BattleSide.Attacking;
+    double longSide = AXIS_TITLE_BAR_SIZE_FRACTION_LONG;
+    double shortSide = 1 - longSide;
+
     return FractionallySizedBox(
-      widthFactor: 1 - AXIS_TITLE_BAR_SIZE_FRACTION_LONG,
-      heightFactor: AXIS_TITLE_BAR_SIZE_FRACTION_LONG,
-      alignment: Alignment.bottomLeft,
+      widthFactor: isAttacking ? shortSide : longSide,
+      heightFactor: isAttacking ? longSide : shortSide,
+      alignment: isAttacking ? Alignment.bottomLeft : Alignment.topRight,
       child: Container(
-        color: ATTACK_COLOR,
-        child: TypesLableColumn(
-          battleSide: BattleSide.Attacking,
-          focusTypeState: focusTypeState,
-          setHoverPos: setHoverPos,
-          toggleClickPoint: toggleClickPoint,
+        color: isAttacking ? ATTACK_COLOR : DEFENDING_COLOR,
+        child: RotatedBox(
+          quarterTurns: isAttacking? 0:3,
+          child: TypesLableColumn(
+            battleSide: battleSide,
+            focusTypeState: focusTypeState,
+            setHoverPos: setHoverPos,
+            toggleClickPoint: toggleClickPoint,
+          ),
         ),
       ),
-    );
-  }
-
-  FractionallySizedBox defendingBar() {
-    return FractionallySizedBox(
-      heightFactor: 1 - AXIS_TITLE_BAR_SIZE_FRACTION_LONG,
-      widthFactor: AXIS_TITLE_BAR_SIZE_FRACTION_LONG,
-      alignment: Alignment.topRight,
-      child: Container(
-          color: DEFENDING_COLOR,
-          child: RotatedBox(
-            quarterTurns: 3,
-            child: TypesLableColumn(
-              battleSide: BattleSide.Defending,
-              focusTypeState: focusTypeState,
-              setHoverPos: setHoverPos,
-              toggleClickPoint: toggleClickPoint,
-            ),
-          )),
     );
   }
 }

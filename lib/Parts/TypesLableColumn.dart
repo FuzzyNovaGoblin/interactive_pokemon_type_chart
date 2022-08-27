@@ -34,20 +34,32 @@ class TypesLableColumn extends StatelessWidget {
             color = Colors.deepPurpleAccent;
           }
           return Expanded(
-            child: MouseRegion(
-              onEnter: (_) => setHoverPos(boardPos),
-              onExit: (_) {
-                if (focusTypeState.hoverPosition == boardPos) {
-                  setHoverPos(BoardPosition(defending: null, attacking: null));
-                }
-              },
-              child: InkWell(
-                onTap: () => toggleClickPoint(boardPos),
-                child: Container(
-                  decoration: BoxDecoration(color: color),
-                  child: TypeChip(damageType: damageType),
+            child: Stack(
+              children: [
+                MouseRegion(
+                  onEnter: (_) => setHoverPos(boardPos),
+                  onExit: (_) {
+                    if (focusTypeState.hoverPosition == boardPos) {
+                      setHoverPos(BoardPosition(defending: null, attacking: null));
+                    }
+                  },
+                  child: InkWell(
+                    onTap: () => toggleClickPoint(boardPos),
+                    child: Container(
+                      // decoration: BoxDecoration(color: color),
+                      child: TypeChip(damageType: damageType),
+                    ),
+                  ),
                 ),
-              ),
+                IgnorePointer(
+                  child: Opacity(
+                    opacity: 0.5,
+                    child: Container(
+                      color: color,
+                    ),
+                  ),
+                ),
+              ],
             ),
           );
         },

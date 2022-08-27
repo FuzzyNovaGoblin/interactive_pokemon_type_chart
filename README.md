@@ -6,6 +6,7 @@ on it will keep it highlighted so you can compare more than one thing at a time.
 
 ## Goals
 
-- [ ] display grid of pokemon types and efectivness
-- [ ] highlight row and column on hover
-- [ ] keep highlight if clicked
+- [x] display grid of pokemon types and efectivness
+- [x] highlight row and column on hover
+- [x] keep highlight if clicked
+- [ ] adjust styles to conform to moblie devices

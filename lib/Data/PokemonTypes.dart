@@ -1,13 +1,7 @@
 enum DamageType { Normal, Fire, Water, Grass, Electric, Ice, Fighting, Poison, Ground, Flying, Psychic, Bug, Rock, Ghost, Dragon, Dark, Steel, Fairy }
 
 class PokemonType {
-  // final String typename;
-  // final int typeNumber; // 0 indexed starting at normal type
-  // final _DamageType _damageType;
 
-  // static int damageDealtTo(PokemonType attacker, PokemonType attacked){
-  //   switch
-  // }
   static double damageTakenFrom(DamageType defending, DamageType attacker) {
     switch (defending) {
       case DamageType.Normal:
@@ -344,25 +338,5 @@ class PokemonType {
             return 1;
         }
     }
-
-    return 1;
   }
 }
-
-// class Normal extends PokemonType{
-
-//   @override
-//   int damageDealtTo(PokemonType attacked) {
-
-//       switch attacked{
-
-//       }
-//     }
-
-//     @override
-//     int damageTakenFrom(PokemonType attacker) {
-//     // TODO: implement damageTakenFrom
-//     throw UnimplementedError();
-//   }
-
-// }

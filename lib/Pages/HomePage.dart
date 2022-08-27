@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:live_pokemon_type_grid/Data/FocusTypeState.dart';
 import 'package:live_pokemon_type_grid/Parts/EffectivenessSquare.dart';
-import 'package:live_pokemon_type_grid/Parts/PoemonTypes.dart';
+import 'package:live_pokemon_type_grid/Data/PokemonTypes.dart';
 
 const AXIS_TITLE_BAR_SIZE_FRACTION_LONG = 0.9;
 

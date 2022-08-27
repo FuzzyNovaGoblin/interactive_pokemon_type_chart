@@ -1,0 +1,1 @@
+enum BattleSide { Attacking, Defending }

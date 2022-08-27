@@ -53,8 +53,10 @@ class EffectivenessSquare extends StatelessWidget {
               decoration: BoxDecoration(
                   color: color,
                   border: Border.all(
+                    width: 0.1,
                     color: Colors.white,
-                  )),
+                  )
+                  ),
               // color: Colors.amber,
               child: FittedBox(
                 fit: BoxFit.contain,
